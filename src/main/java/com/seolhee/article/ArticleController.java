@@ -51,6 +51,9 @@ public class ArticleController {
 	 */
 	@GetMapping("/article/addForm")
 	public String articleAddForm(HttpSession session) {
+		Object memberObj = session.getAttribute("MEMBER");
+		if(memberObj==null)
+			return "redirect:/app/loginForm";
 		return "article/addForm";
 	}
 
@@ -59,8 +62,12 @@ public class ArticleController {
 	 */
 	@PostMapping("/article/add")
 	public String articleAdd(Article article, HttpSession session) {
-		article.setUserId("2017041060");
-		article.setName("배설희");
+		Object memberObj = session.getAttribute("MEMBER");
+		if(memberObj==null)
+			return "redirect:/app/loginForm";
+		Member member = (Member)memberObj;
+		article.setUserId(member.getMemberId());
+		article.setName(member.getName());
 		articleDao.addArticle(article);
 		return "redirect:/app/article/list";
 	}
