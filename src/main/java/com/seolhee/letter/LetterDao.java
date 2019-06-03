@@ -1,5 +1,7 @@
 package com.seolhee.letter;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,12 +28,14 @@ public class LetterDao {
 				letter.getContent(), letter.getSenderId(), letter.getSenderName(), letter.getReceiverId(), letter.getReceiverName());
 	}
 	
-	public Letter sendLetter(String senderId) {
-		return jdbcTemplate.queryForObject(SEND_LETTER, letterRowMapper, senderId);
+	public List<Letter> sendLetters(int offset, int count) {
+		return jdbcTemplate.query(SEND_LETTER, letterRowMapper, offset,
+				count);
 	}
 	
-	public Letter receiveLetter(String receiverId) {
-		return jdbcTemplate.queryForObject(RECEIVE_LETTER, letterRowMapper, receiverId);
+	public List<Letter> receiveletters(int offset, int count) {
+		return jdbcTemplate.query(RECEIVE_LETTER, letterRowMapper, offset,
+				count);
 	}
 	
 	public Letter getLetter(String letterId, String senderId, String receiverId) {

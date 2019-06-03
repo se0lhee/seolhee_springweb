@@ -15,5 +15,7 @@
 	<p>
 		<a href="./app/member/changePwdForm">비밀번호 변경</a>
 	</p>
+	<p><a href="./app/letter/sendList">보낸 편지</a></p>
+	<p><a href="./app/letter/receiveList">받은 편지</a></p>
 </body>
 </html>
