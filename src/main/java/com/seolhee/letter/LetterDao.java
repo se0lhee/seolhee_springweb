@@ -28,22 +28,22 @@ public class LetterDao {
 				letter.getContent(), letter.getSenderId(), letter.getSenderName(), letter.getReceiverId(), letter.getReceiverName());
 	}
 	
-	public List<Letter> sendLetters(int offset, int count) {
+	public List<Letter> sendLetters(String senderId, int offset, int count) {
 		return jdbcTemplate.query(SEND_LETTER, letterRowMapper, offset,
 				count);
 	}
 	
-	public List<Letter> receiveLetters(int offset, int count) {
+	public List<Letter> receiveLetters(String receiverId, int offset, int count) {
 		return jdbcTemplate.query(RECEIVE_LETTER, letterRowMapper, offset,
 				count);
 	}
 	
-	public Letter getLetter(String letterId, String senderId, String receiverId) {
-		return jdbcTemplate.queryForObject(GET_LETTER,letterRowMapper, letterId, senderId, receiverId);
+	public Letter getLetter(String letterId, String memberId) {
+		return jdbcTemplate.queryForObject(GET_LETTER,letterRowMapper, letterId, memberId, memberId);
 	}
 	
-	public int deleteLetter(String letterId, String senderId, String receiverId) {
-		return jdbcTemplate.update(DELETE_LETTER, letterId, senderId, receiverId);
+	public int deleteLetter(String letterId, String memberId) {
+		return jdbcTemplate.update(DELETE_LETTER, letterId, memberId, memberId);
 	}
 	
 }
