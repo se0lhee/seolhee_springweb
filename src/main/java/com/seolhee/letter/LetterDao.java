@@ -33,7 +33,7 @@ public class LetterDao {
 				count);
 	}
 	
-	public List<Letter> receiveletters(int offset, int count) {
+	public List<Letter> receiveLetters(int offset, int count) {
 		return jdbcTemplate.query(RECEIVE_LETTER, letterRowMapper, offset,
 				count);
 	}

@@ -34,7 +34,7 @@ th {
 		<tbody>
 			<c:forEach var="article" items="${articleList}">
 				<tr>
-					<td><a href="./app/letter/view?letterId=${letter.letterId }">${letter.title }</a></td>
+					<td><a href="./app/letter/sendview?letterId=${letter.letterId }">${letter.title }</a></td>
 					<td>${letter.receiverId }</td>
 					<td>${letter.cdate }</td>
 				</tr>
