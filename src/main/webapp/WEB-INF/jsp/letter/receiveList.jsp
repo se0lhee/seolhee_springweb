@@ -20,22 +20,30 @@ th {
 }
 </style>
 </head>
+<body>
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<h2>받은 편지함</h2>
+<p>전체 ${count }건</p>
 <form action="./app/letter/receiveList">
+<input type="number" name="page" value="${param.page }" placeholder="페이지"
+			min="1" max="${count / 20 + 1 }" step="1" style="width: 50px;">
+<button type="submit">조회</button>
 	</form>
 	<table>
 		<thead>
 			<tr>
+				<th>보낸이</th>
 				<th>제목</th>
-				<th>보낸 사람</th>
-				<th>등록일시</th>
+				<th>보낸시간</th>
 				
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="letter" items="${letterList}">
 				<tr>
-					<td><a href="./app/letter/receiveview?letterId=${letter.letterId }">${letter.title }</a></td>
-					<td>${letter.senderId }</td>
+					<td><a
+						href="./app/letter/form?receiverId=${letter.senderId }&receiverName=${letter.senderName}">${letter.senderId }:${letter.senderName }</a></td>
+					<td><a href="./app/letter/view?letterId=${letter.letterId }">${letter.title }</a></td>
 					<td>${letter.cdate }</td>
 				</tr>
 			</c:forEach>

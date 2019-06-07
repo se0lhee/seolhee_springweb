@@ -40,7 +40,8 @@ public class LoginController {
 	 */
 	@PostMapping("/login")
 	public String submit(@RequestParam("email") String email,
-			@RequestParam("password") String password, HttpSession session) {
+			@RequestParam("password") String password, 
+			@RequestParam("returnUrl")String returnUrl, HttpSession session) {
 		try {
 			Member member = memberDao.selectByLogin(email, password);
 			session.setAttribute("MEMBER", member);
@@ -48,7 +49,8 @@ public class LoginController {
 			return "login/loginSuccess";
 		} catch (EmptyResultDataAccessException e) {
 			logger.debug("로그인 실패. email={}", email);
-			return "redirect:/app/loginForm?mode=FAILURE&email=" + email;
+			return "redirect:/app/loginForm?mode=FAILURE&email=" + email + 
+					"&returnUrl=" + returnUrl;
 		}
 	}
 

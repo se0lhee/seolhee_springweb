@@ -49,7 +49,6 @@ th {
 					<td><a href="./app/article/view?articleId=${article.articleId }">${article.title }</a></td>
 					<td>${article.name }</td>
 					<td>${article.cdate }</td>
-					<td><a href="./app/letter/letter">편지쓰기</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

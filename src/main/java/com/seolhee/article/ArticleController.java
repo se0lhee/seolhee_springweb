@@ -2,7 +2,6 @@ package com.seolhee.article;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -51,13 +50,7 @@ public class ArticleController {
 		model.addAttribute("article", article);
 	}
 
-	/**
-	 * 글 등록 화면
-	 */
-	@GetMapping("/article/addForm")
-	public String articleAddForm(HttpSession session) {
-		return "article/addForm";
-	}
+
 
 	/**
 	 * 글 등록

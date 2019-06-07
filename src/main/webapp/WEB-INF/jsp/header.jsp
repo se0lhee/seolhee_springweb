@@ -3,6 +3,8 @@
 	<p>
 		<span><a href="./">홈</a></span> | <span><a href="./app/members">회원목록</a></span>
 		| <span><a href="./app/article/list">게시판</a></span> |
+		|<span><a href="./app/letter/sendList">보낸 편지</a></span>|
+		<span><a href="./app/letter/receiveList">받은 편지</a></span>|
 		<!-- 로그인 여부에 따라 분기 -->
 		<c:choose>
 			<c:when test="${!empty sessionScope.MEMBER }">
